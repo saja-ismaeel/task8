@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    console.log("Effect is running");
+
+  }, [name, mobile]); // Include name and mobile in the dependency array
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        id="name"
+        placeholder="Name"
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        id="mobile"
+        placeholder="Mobile"
+        onChange={(e) => setMobile(e.target.value)}
+      />
+      <div className="darkmode">
+        <input
+          type="checkbox"
+          id="darkMode"
+          onChange={() => setDarkMode(!darkMode)}
+        />
+        Enable dark mode
+      </div>
     </div>
   );
 }
